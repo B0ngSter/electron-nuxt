@@ -2,23 +2,14 @@
   <div class="e-nuxt-container">
     <div class="e-nuxt-content">
       <div class="e-nuxt-logo">
-        <img style="max-width: 100%;" src="~assets/electron-nuxt.png">
+        <img style="max-width: 100%" src="~assets/electron-nuxt.png">
       </div>
       <div class="e-nuxt-system-info">
         <system-information />
       </div>
     </div>
-    <div class="e-nuxt-links">
-      <div class="e-nuxt-button" @click="openURL('https://github.com/michalzaq12/electron-nuxt')">
-        Github
-      </div>
-      <div class="e-nuxt-button" @click="openURL('https://nuxtjs.org/guide')">
-        Nuxt.js
-      </div>
-      <div class="e-nuxt-button" @click="openURL('https://electronjs.org/docs')">
-        Electron.js
-      </div>
-    </div>
+    <h3>{{ data.msg }}</h3>
+    <button @click="hi()">Submit</button>
   </div>
 </template>
 
@@ -32,12 +23,19 @@ export default {
   },
   data () {
     return {
-      externalContent: ''
+      data: {}
     }
   },
   methods: {
     openURL (url) {
       window.open(url)
+    },
+    hi () {
+      fetch('http://localhost:5000/me')
+        .then(res => res.json())
+        .then(res => {
+          this.data = res
+        })
     }
   }
 }
@@ -58,7 +56,7 @@ export default {
   flex-wrap: wrap;
 }
 
-.e-nuxt-logo{
+.e-nuxt-logo {
   width: 400px;
 }
 
@@ -83,7 +81,7 @@ export default {
   font-size: 1rem;
 }
 
-.e-nuxt-button:hover{
+.e-nuxt-button:hover {
   cursor: pointer;
   color: white;
   background-color: #397c6d;

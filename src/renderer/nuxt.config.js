@@ -4,24 +4,21 @@
  * @link {https://nuxtjs.org/guide/configuration/}
  */
 
-
 module.exports = {
   ssr: false,
   target: 'static',
   head: {
     title: 'vendor-desktop',
-    meta: [{ charset: "utf-8" }]
+    meta: [{ charset: 'utf-8' }]
   },
   loading: false,
   plugins: [
-    
-    
-    
+
   ],
   buildModules: [
-    
+
   ],
   modules: [
-    
-  ],
-};
+
+  ]
+}
